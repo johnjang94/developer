@@ -1,113 +1,196 @@
+"use client";
+import Link from "next/link";
 import Image from "next/image";
+import { FaArrowRight, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+
+import Ruminate from "../assets/development/ruminate.png";
+import KBlock from "../assets/development/kblock.png";
+import Portfolio3 from "../assets/development/portfolio-v3.gif";
+
+import projectsData from "../app/home/projects.json";
+import { useEffect, useState } from "react";
+import "../app/home/homepage.css";
+import { ArchiveCard } from "@/components/archive";
+
+const titles = ["Front-End Development", "Web Design", "Web Development"];
+
+interface Project {
+  id: number;
+  projectTitle: string;
+  projectSummary: string;
+  toolsUsed: string[];
+  githubLink: string;
+  liveLink: string;
+  featured?: string;
+}
+
+const cardContainerClass =
+  "md:flex md:grid-cols-2 mx-auto md:w-10/12 my-10 md:my-20";
+const cardImageClass =
+  "md:block hidden md:w-3/6 mx-auto rounded-xl shadow-[rgba(99,99,99,0.2)_0px_2px_8px_0px]";
+const cardImageClassMobile =
+  "block md:hidden mx-auto m-5 mt-0 rounded-xl shadow-[rgba(99,99,99,0.2)_0px_2px_8px_0px]";
+const cardTextClass = "p-5 md:w-3/6 z-10";
+const iconContainerClass =
+  "flex md:justify-start space-x-3 -mt-2 md:my-3 text-xl md:text-2xl";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    setProjects(projectsData);
+  }, []);
+
+  const renderProjectCard = (project: Project, isOdd: boolean) => {
+    return (
+      <div className={cardContainerClass} key={project.id}>
+        {!isOdd && (
+          <Image
+            src={
+              project.id === 1
+                ? Ruminate
+                : project.id === 2
+                ? KBlock
+                : Portfolio3
+            }
+            alt={project.projectTitle}
+            className={cardImageClass}
+          />
+        )}
+        <div
+          className={`${
+            project.id === 3 ? "text-black" : "text-white"
+          } ${cardTextClass}`}
+        >
+          {project.featured && (
+            <h5 className="md:text-start text-center">{project.featured}</h5>
+          )}
+          <h1 className="md:text-start text-center md:text-3xl text-xl md:my-5 my-1">
+            {project.projectTitle}
+          </h1>
+          <Image
+            src={
+              project.id === 1
+                ? Ruminate
+                : project.id === 2
+                ? KBlock
+                : Portfolio3
+            }
+            alt={project.projectTitle}
+            className={cardImageClassMobile}
+          />
+          <p className="w-full mx-auto md:text-left md:mx-0">
+            {project.projectSummary}
+          </p>
+          <div className="flex md:flex-col items-center md:items-start justify-between md:justify-normal gap-2">
+            <div className="flex-wrap space-x-2 text-gray-400 md:my-5">
+              {project.toolsUsed.map((tool, index) => (
+                <span
+                  key={index}
+                  className="md:mr-2 mb-2 text-xs md:text-xl w-full"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+            <div className={iconContainerClass}>
+              <a href={project.githubLink}>
+                <FaGithub />
+              </a>
+              <a href={project.liveLink}>
+                <FaExternalLinkAlt />
+              </a>
+            </div>
+          </div>
         </div>
+        {isOdd && (
+          <Image
+            src={
+              project.id === 1
+                ? Ruminate
+                : project.id === 2
+                ? KBlock
+                : Portfolio3
+            }
+            alt={project.projectTitle}
+            className={cardImageClass}
+            unoptimized={true}
+          />
+        )}
       </div>
+    );
+  };
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+  return (
+    <main>
+      <div className="p-24">
+        <header className="lg:my-0 mx-auto lg:w-10/12 w-10/12">
+          <h1 className="lg:text-9xl text-4xl">John Jang</h1>
+          <div className="rotating-text-container mt-5">
+            {titles.map((title, index) => (
+              <h2
+                key={index}
+                className={`rotating-text ${
+                  title === "Front-End Development"
+                    ? "text-xl lg:text-3xl"
+                    : "text-3xl font-normal"
+                }`}
+                style={{ animationDelay: `${index * 2}s` }}
+              >
+                {title}
+              </h2>
+            ))}
+          </div>
+          <h4 className="lg:text-3xl text-xl">
+            My personal space where I let my design imagination come true in
+            reality. I am currently building a web application for Maina & Kids
+            Child Foundation in Nigeria.
+          </h4>
+          <div>
+            <Link
+              href="/about"
+              className="flex space-x-3 items-center mt-5 text-blue-500 hover:underline hover:cursor-pointer w-fit"
+            >
+              <button>More about me</button>
+              <FaArrowRight />
+            </Link>
+          </div>
+        </header>
+        <section className="my-5 py-10">
+          <h2 className="md:text-4xl text-2xl my-5 md:w-4/6 md:mx-auto text-center">
+            Some things I have built
+          </h2>
+          {projects.map((project, index) =>
+            renderProjectCard(project, index % 2 !== 0)
+          )}
+        </section>
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <section>
+        <h1 className="text-3xl my-10 text-center text-black">My Archives</h1>
+        <div className="md:grid-cols-3 p-5 md:flex md:gap-5 md:mx-48 md:justify-between">
+          <ArchiveCard
+            title="Simplified YouTube"
+            description="For learning purposes, this is a mini-version of YouTube with good quality of streaming."
+            tools={["React", "JavaScript", "Tailwind CSS"]}
+            githubLink="https://github.com/johnjang94/cloneYouTube"
+            liveLink="https://youtube-myversion.netlify.app/"
+          />
+          <ArchiveCard
+            title="Mini-Game"
+            description="Let's have some fun: click the carrots only."
+            tools={["JavaScript"]}
+            githubLink="https://github.com/johnjang94/carrot"
+            liveLink="https://johnjang94.github.io/carrot/"
+          />
+          <ArchiveCard
+            title="To-Do List"
+            description="For learning purposes, this is a mini-version of YouTube with good quality of streaming."
+            tools={["JavaScript"]}
+            githubLink="https://github.com/johnjang94/to-do-app"
+            liveLink="https://johnjang94.github.io/to-do-app/"
+          />
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "featured": "Featured Project",
+    "projectTitle": "Ruminate",
+    "projectSummary": "A web app for a non-profit organization in the U.S. that strives to lower the poverty rate by connecting small local business owners and potential customers who are seeking for good quality of consumable products.",
+    "toolsUsed": ["React", "TypeScript", "Firebase", "Phase 1"],
+    "githubLink": "https://github.com/johnjang94/project_ruminate",
+    "liveLink": "https://ruminate-frontend.netlify.app/"
+  },
+  {
+    "id": 2,
+    "featured": "Featured Project",
+    "projectTitle": "Kadena Web Blockchain",
+    "projectSummary": "A WEB3 app for NFT users. From this website, users can view the current trends of different NFT types, list of transactions (live), transaction history, NFT wallet, etc. (currently, still under-construction)",
+    "toolsUsed": ["React", "JavaScript", "Tailwind CSS", "Phase 1"],
+    "githubLink": "https://github.com/techfleetworks/k-block-app",
+    "liveLink": "https://kblock.vercel.app/"
+  },
+  {
+    "id": 3,
+    "projectTitle": "Portfolio V.3",
+    "projectSummary": "I have rebuilt my portfolio with the most recent design and technology.",
+    "toolsUsed": ["Next.js", "TypeScript", "React", "Tailwind CSS"],
+    "githubLink": "",
+    "liveLink": ""
+  }
+]
