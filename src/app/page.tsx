@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import "../app/home/homepage.css";
 import { ArchiveCard } from "@/components/archive";
 
-const titles = ["Front-End Development", "Web Design", "Web Development"];
+const titles = ["Builder", "Initiator", "Analytical"];
 
 interface Project {
   id: number;
@@ -55,6 +55,7 @@ export default function Home() {
             }
             alt={project.projectTitle}
             className={cardImageClass}
+            unoptimized={true}
           />
         )}
         <div
@@ -123,18 +124,14 @@ export default function Home() {
 
   return (
     <main>
-      <div className="p-24">
-        <header className="lg:my-0 mx-auto lg:w-10/12 w-10/12">
+      <div className="md:p-24">
+        <header className="lg:my-0 my-24 mx-auto lg:w-10/12">
           <h1 className="lg:text-9xl text-4xl">John Jang</h1>
           <div className="rotating-text-container mt-5">
             {titles.map((title, index) => (
               <h2
                 key={index}
-                className={`rotating-text ${
-                  title === "Front-End Development"
-                    ? "text-xl lg:text-3xl"
-                    : "text-3xl font-normal"
-                }`}
+                className="rotating-text text-xl lg:text-3xl font-normal"
                 style={{ animationDelay: `${index * 2}s` }}
               >
                 {title}
@@ -142,9 +139,7 @@ export default function Home() {
             ))}
           </div>
           <h4 className="lg:text-3xl text-xl">
-            My personal space where I let my design imagination come true in
-            reality. I am currently building a web application for Maina & Kids
-            Child Foundation in Nigeria.
+            Front-End Lead Apprentice at Philly Truce.
           </h4>
           <div>
             <Link

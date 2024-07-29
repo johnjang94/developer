@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { RxHamburgerMenu } from "react-icons/rx";
 
 // LOGO
 import Logo from "../assets/logo/logo500.png";
@@ -24,7 +23,9 @@ export default function Navigation() {
         </div>
       </div>
       <div className="md:hidden">
-        <RxHamburgerMenu className="w-6" />
+        <a href="mailto:jscolbe9675@gmail.com">
+          <button>Contact</button>
+        </a>
       </div>
     </div>
   );
