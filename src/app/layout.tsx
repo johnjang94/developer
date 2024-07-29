@@ -4,7 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/navbar";
 import Footer from "@/components/footer";
 
-const comfortaa = Comfortaa({ subsets: ["latin"] });
+const comfortaa = Comfortaa({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "John Jang the Developer",
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`mx-12 {comfortaa.className}`}>
+      <body className={`${comfortaa.className} mx-12`}>
         <Navigation />
         {children}
         <Footer />

@@ -125,7 +125,7 @@ export default function Home() {
   return (
     <main>
       <div className="md:p-24">
-        <header className="lg:my-0 my-24 mx-auto lg:w-10/12">
+        <header className="lg:my-0 my-24 mx-auto lg:w-9/12 justify-center">
           <h1 className="lg:text-9xl text-4xl">John Jang</h1>
           <div className="rotating-text-container mt-5">
             {titles.map((title, index) => (
