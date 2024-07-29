@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Profile from "../../assets/profile/profile.png";
+// import Image from "next/image";
+// import Profile from "../../assets/profile/profile.png";
 
 export default function About() {
   return (
@@ -10,7 +10,7 @@ export default function About() {
           My name is John Jang
         </h1>
       </div>
-      <Image src={Profile} alt="Profile" className="mx-auto my-14" />
+      {/* <Image src={Profile} alt="Profile" className="mx-auto my-14" /> */}
       <div className="w-full md:w-3/6 md:mx-auto px-10 space-y-5 text-black">
         <p>
           I&#39;m a Lead Web Developer Apprentice at a non-profit organization
