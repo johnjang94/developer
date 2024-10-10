@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "image": "/assets/philly-truce.jpg",
+    "title": "Philly Truce PWA",
+    "description": "A progressive mobile web application that is built to lower the crime rates in Philadelphia, USA",
+    "tools": [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "RESTful API",
+      "MongoDB",
+      "Prisma",
+      "PWA"
+    ],
+    "website_link": "",
+    "github_repo": "https://github.com/Philly-Truce/phillytruce-pwa"
+  },
+  {
+    "id": 2,
+    "image": "/assets/ruminate.png",
+    "title": "Ruminate",
+    "description": "A social service platform that intends to lower the poverty in vulnerable communities across the US",
+    "tools": ["TypeScript", "React", "Tailwind CSS", "Firebase"],
+    "website_link": "https://ruminate-frontend.netlify.app/",
+    "github_repo": "https://github.com/johnjang94/project_ruminate"
+  },
+  {
+    "id": 3,
+    "image": "/assets/kblock.png",
+    "title": "K-Block Web Explorer",
+    "description": "A web explorer that allows NFT traders to search for, view the detail of, and the history of actively traded NFTs in the market.",
+    "tools": ["React", "JavaScript", "Tailwind CSS"],
+    "website_link": "https://kblock.vercel.app/",
+    "github_repo": "https://github.com/jaymehta20/K-Block-Frontend"
+  }
+]

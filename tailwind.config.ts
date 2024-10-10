@@ -12,6 +12,12 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        comfortaa: ['"Comfortaa"', "sans-serif"],
+      },
+      backgroundImage: {
+        nightsky: "url('/assets/nightsky.jpg')",
+      },
     },
   },
   plugins: [],
